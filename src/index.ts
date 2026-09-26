@@ -859,7 +859,21 @@ async function sbGet(path: string, params: Record<string, string>): Promise<unkn
     // A 200 that is not JSON is the catalog answering with something other than
     // its API — report the shape, never let it surface as a parse error.
     return {
-      __error: `ScienceBase returned HTTP ${res.status} with a non-JSON body (${body.slice(0, 120)})`,
+      // `upstream_down:` is a CLASS TOKEN the gateway strips and classifies on
+      // (error-class.ts). Without it this booked plain `error`, which means
+      // PIPEWORX BROKE — and a catalog answering HTML where it promises JSON is
+      // the upstream's fault, not ours.
+      //
+      // It also makes the two remaining failure paths tellable apart in
+      // telemetry, which is why it is worth the token rather than just better
+      // prose. Measured 2026-09-26: `get_item` showed 2 external `error` events
+      // (09-22, 09-25) and they were read as "the not-found fix did not land".
+      // They are not misses — a miss returns `found:false` above and books
+      // `user_error`, verified live. They are THIS branch. With blob5 content
+      // redacted there was no way to see that from the class alone, and the
+      // callers are in regions where USGS may challenge differently: three
+      // probes from here returned clean JSON, so it is not reproducible locally.
+      __error: `upstream_down: ScienceBase returned HTTP ${res.status} with a non-JSON body (${body.slice(0, 120)})`,
     };
   }
 }
