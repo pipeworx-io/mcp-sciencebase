@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-sciencebase",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "USGS ScienceBase catalog MCP.",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-sciencebase": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "sciencebase"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-sciencebase.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/sciencebase",
   "pipeworx": {
-    "sourceHash": "v1-b2e2f72f448fb7906515f7b7bdd0567372bcd833e6a8cac5c6cb9303c906689a",
-    "sourceCommit": "fb13c3bcac104b099040ae8d7d93cb800d570afb"
+    "mode": "gateway",
+    "slug": "sciencebase",
+    "gatewaySlug": "sciencebase",
+    "sourceHash": "v1-3ba9290e89df0742288539a866744b348c2cd91381c641eba7fd463117013274",
+    "sourceCommit": "6bae4cfa7b6a73bbe014dc8820a19c80c842b21e"
   }
 }
