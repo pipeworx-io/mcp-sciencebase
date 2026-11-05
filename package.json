@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-sciencebase",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "USGS ScienceBase catalog MCP.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "sciencebase",
     "gatewaySlug": "sciencebase",
-    "sourceHash": "v1-3ba9290e89df0742288539a866744b348c2cd91381c641eba7fd463117013274",
-    "sourceCommit": "6bae4cfa7b6a73bbe014dc8820a19c80c842b21e"
+    "sourceHash": "v1-404b640b8abb0cb555a1fbe4f53f2d852ce6d88a7213de3ea20191b0a4a97a68",
+    "sourceCommit": "8fc802aa5e23be625ce08d97178f5676c7bc93f3"
   }
 }
